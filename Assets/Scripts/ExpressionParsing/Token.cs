@@ -1,4 +1,4 @@
-namespace LogicTower.QuestSystem
+namespace LogicTower.ExpressionParsing
 {
     public class FormulaToken : Token
     {

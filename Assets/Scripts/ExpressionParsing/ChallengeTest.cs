@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace LogicTower.QuestSystem
+namespace LogicTower.ExpressionParsing
 {
     public class ChallengeTest : MonoBehaviour
     {
@@ -19,10 +19,19 @@ namespace LogicTower.QuestSystem
             {
                 [Formula.P] = p,
                 [Formula.Q] = q,
-                [Formula.R] = r
+                [Formula.R] = r,
+                [Formula.P1] = false,
+                [Formula.P2] = false,
+                [Formula.P3] = false
             };
             
             result = challengeSettings.Solve(values);
+        }
+
+        [ContextMenu("Recreate Parser")]
+        public void RecreateParser()
+        {
+            challengeSettings.Recreate();
         }
     }
 }

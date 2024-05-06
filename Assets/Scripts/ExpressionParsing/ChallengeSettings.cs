@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace LogicTower.QuestSystem
+namespace LogicTower.ExpressionParsing
 {
     [CreateAssetMenu(menuName = "Logic Tower/Challenge Settings")]
     public class ChallengeSettings : ScriptableObject
@@ -14,6 +14,11 @@ namespace LogicTower.QuestSystem
         {
             _expressionParser ??= new ExpressionParser(expression);
             return _expressionParser.Solve(formulasValues);
+        }
+
+        public void Recreate()
+        {
+            _expressionParser = new ExpressionParser(expression);
         }
     }
 }

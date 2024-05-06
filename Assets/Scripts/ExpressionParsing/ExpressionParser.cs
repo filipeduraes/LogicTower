@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using LogicTower.ExpressionParsing;
 
-namespace LogicTower.QuestSystem
+namespace LogicTower.ExpressionParsing
 {
     public class ExpressionParser
     {
@@ -9,6 +10,12 @@ namespace LogicTower.QuestSystem
         
         public ExpressionParser(string expression)
         {
+            if (string.IsNullOrWhiteSpace(expression))
+            {
+                _root = new FormulaNode(new FormulaToken(Formula.P));
+                return;
+            }
+            
             List<Token> tokens = ExpressionLexer.Tokenize(expression);
             _root = BuildExpressionTree(tokens);
         }
@@ -93,8 +100,8 @@ namespace LogicTower.QuestSystem
             {
                 return unaryOperatorToken.Operator switch
                 {
-                        UnaryOperator.NOT => 0,
-                        _ => throw new ArgumentOutOfRangeException()
+                    UnaryOperator.NOT => 0,
+                    _ => throw new ArgumentOutOfRangeException()
                 };
             }
 
@@ -123,9 +130,11 @@ namespace LogicTower.QuestSystem
                         {
                             tokens.RemoveAt(0);
                             tokens.RemoveAt(tokens.Count - 1);
+                         
+                            RemoveParenthesisAround(tokens);
                         }
-                                
-                        return;
+                        
+                        break;
                     }
                 }
             }
