@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca120fb3ee925804b96f7770fd4d4530, type: 3}
   m_Name: New Challenge Settings
   m_EditorClassIdentifier: 
-  expression: ~p
+  expression: (p ^ q) v ~r
