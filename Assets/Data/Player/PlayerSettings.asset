@@ -24,7 +24,7 @@ MonoBehaviour:
     type: 2}
   groundLayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 640
   playerAnimations:
     idleState: Idle
     runState: Run
