@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace LogicTower.PlayerBehavior
 {
@@ -30,6 +31,18 @@ namespace LogicTower.PlayerBehavior
                 float xFlipModifier = _isFlippingX ? -1f : 1f;
                 ApplyFlipModifier(_currentXFlipTimer / TimeToFlip * xFlipModifier);
             }
+        }
+
+        private void OnDrawGizmos()
+        {
+            Vector3 position = groundCheckPivot.position;
+            Vector3 rightPosition = position + Vector3.right * playerSettings.RaycastOffset;
+            Vector3 leftPosition = position + Vector3.left * playerSettings.RaycastOffset;
+            
+            Gizmos.color = Color.red;
+            Gizmos.DrawLine(leftPosition, leftPosition + Vector3.down * playerSettings.GroundDistance);
+            Gizmos.DrawLine(position, position + Vector3.down * playerSettings.GroundDistance);
+            Gizmos.DrawLine(rightPosition, rightPosition + Vector3.down * playerSettings.GroundDistance);
         }
 
         public void Run(int direction)
@@ -88,7 +101,15 @@ namespace LogicTower.PlayerBehavior
 
         public bool IsTouchingGround()
         {
-            return Physics2D.Raycast(groundCheckPivot.position, Vector2.down, playerSettings.GroundDistance, playerSettings.GroundLayer);
+            Vector3 position = groundCheckPivot.position;
+            Vector3 rightPosition = position + Vector3.right * playerSettings.RaycastOffset;
+            Vector3 leftPosition = position + Vector3.left * playerSettings.RaycastOffset;
+            
+            RaycastHit2D leftHit = Physics2D.Raycast(leftPosition, Vector2.down, playerSettings.GroundDistance, playerSettings.GroundLayer);
+            RaycastHit2D middleHit = Physics2D.Raycast(position, Vector2.down, playerSettings.GroundDistance, playerSettings.GroundLayer);
+            RaycastHit2D rightHit = Physics2D.Raycast(rightPosition, Vector2.down, playerSettings.GroundDistance, playerSettings.GroundLayer);
+            
+            return leftHit || middleHit || rightHit;
         }
         
         public bool IsFalling()

@@ -18,6 +18,7 @@ MonoBehaviour:
   maxFallVelocity: 20
   jumpGravityScale: 1
   fallGravityScale: 4
+  raycastOffset: 0.245
   noFrictionPhysicsMaterial: {fileID: 6200000, guid: 0697d35a2a9a6464db228af8f8c282c6,
     type: 2}
   fullFrictionPhysicsMaterial: {fileID: 6200000, guid: fdb6c615fcb472e4aadfaef3490a66e4,
@@ -30,3 +31,4 @@ MonoBehaviour:
     runState: Run
     jumpState: Jump
     fallState: Fall
+    doorInState: DoorIn
