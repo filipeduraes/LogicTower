@@ -9,13 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca120fb3ee925804b96f7770fd4d4530, type: 3}
-  m_Name: Tutorial_Challenge01
+  m_Script: {fileID: 11500000, guid: 5834b5087d578d24c926ce20cd31e6d6, type: 3}
+  m_Name: Default Local Group_ContentUpdateGroupSchema
   m_EditorClassIdentifier: 
-  expression: ~p
-  prepositionDescriptions: []
-  levelPrefab:
-    m_AssetGUID: 4bb59a44f6abfcb489fb089694440884
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 0
+  m_Group: {fileID: 11400000, guid: bfeb15d18d6d9ec4bacbfa0a4bb36aab, type: 2}
+  m_StaticContent: 0

@@ -10,6 +10,7 @@ namespace LogicTower.LevelManagement
         private void OnTriggerEnter2D(Collider2D other)
         {
             OnLevelLoadStarted(transform.position);
+            LevelLoader.LoadNextChallenge();
         }
     }
 }

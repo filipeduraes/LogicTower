@@ -3,6 +3,7 @@
   "rootNamespace": "LogicTower.QuestSystem",
   "references": [
     "GUID:498bf3a1ee216d247a4c9de1cc16cd79",
-    "GUID:6055be8ebefd69e48b49212b09b47b2f"
+    "GUID:6055be8ebefd69e48b49212b09b47b2f",
+    "GUID:7d2fb3d9e3b14a9b89b17fbf629413ab"
   ]
 }

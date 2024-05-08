@@ -1,3 +1,8 @@
 ﻿{
-  "name": "LogicTower.LevelManagement"
+  "name": "LogicTower.LevelManagement",
+  "references":[ 
+    "GUID:7d2fb3d9e3b14a9b89b17fbf629413ab",
+    "GUID:9e24947de15b9834991c9d8411ea37cf",
+    "GUID:84651a3751eca9349aac36a66bba901b" 
+  ]
 }

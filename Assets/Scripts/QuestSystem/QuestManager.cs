@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using LogicTower.Data;
 using LogicTower.ExpressionParsing;
 using UnityEngine;
 
@@ -8,7 +9,6 @@ namespace LogicTower.QuestSystem
     public class QuestManager : MonoBehaviour
     {
         [SerializeField] private ChallengeSettings challengeSettings;
-
 
         public static event Action<QuestData> OnQuestDataChanged = delegate { }; 
         public static event Action<bool> OnQuestFinishedChanged = delegate { };

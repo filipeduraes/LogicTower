@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ca120fb3ee925804b96f7770fd4d4530, type: 3}
-  m_Name: Tutorial_Challenge01
+  m_Name: Tutorial_Challenge02
   m_EditorClassIdentifier: 
-  expression: ~p
+  expression: p ^ q
   prepositionDescriptions: []
   levelPrefab:
-    m_AssetGUID: 4bb59a44f6abfcb489fb089694440884
+    m_AssetGUID: edf34b40afdf07f49879c22053d421ec
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
