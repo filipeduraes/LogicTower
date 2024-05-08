@@ -1,0 +1,8 @@
+﻿{
+  "name": "LogicTower.PlayerBridge",
+  "rootNamespace": "LogicTower.PlayerBridge",
+  "references": [
+    "GUID:7cdfc38328919064daad171a9ab9641a",
+    "GUID:5efd200af4df4c5ab7527c750bd27bcf"
+  ]
+}
