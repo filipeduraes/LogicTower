@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace LogicTower.Player
+namespace LogicTower.PlayerBehavior
 {
     [Serializable]
     public class PlayerAnimations

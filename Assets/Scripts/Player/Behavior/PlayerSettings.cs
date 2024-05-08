@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace LogicTower.Player
+namespace LogicTower.PlayerBehavior
 {
     [CreateAssetMenu(menuName = "Logic Tower/Player Settings")]
     public class PlayerSettings : ScriptableObject
@@ -14,6 +14,8 @@ namespace LogicTower.Player
         [SerializeField] private float maxFallVelocity = 20f;
         [SerializeField] private float jumpGravityScale = 0.5f;
         [SerializeField] private float fallGravityScale = 3f;
+        [SerializeField] private PhysicsMaterial2D noFrictionPhysicsMaterial;
+        [SerializeField] private PhysicsMaterial2D fullFrictionPhysicsMaterial;
         [SerializeField] private LayerMask groundLayer;
         
         [Header("Animation")]
@@ -26,6 +28,8 @@ namespace LogicTower.Player
         public float MaxFallVelocity => maxFallVelocity;
         public float JumpGravityScale => jumpGravityScale;
         public float FallGravityScale => fallGravityScale;
+        public PhysicsMaterial2D NoFrictionPhysicsMaterial => noFrictionPhysicsMaterial;
+        public PhysicsMaterial2D FullFrictionPhysicsMaterial => fullFrictionPhysicsMaterial;
         public LayerMask GroundLayer => groundLayer;
     }
 }

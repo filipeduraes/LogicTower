@@ -1,7 +1,11 @@
 {
-    "name": "LogicTower.Player",
-    "rootNamespace": "LogicTower.Player",
-	"references":[ "GUID:5ff72c553c6de1345832c79f06ff082e", "GUID:75469ad4d38634e559750d17036d5f7c" ],
+    "name": "LogicTower.PlayerBehavior",
+    "rootNamespace": "LogicTower.PlayerBehavior",
+	"references":[ 
+        "GUID:5ff72c553c6de1345832c79f06ff082e", 
+        "GUID:75469ad4d38634e559750d17036d5f7c", 
+        "GUID:96e302153f93314479af668b76e980b2" 
+    ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,

@@ -1,7 +1,6 @@
-﻿using UnityEngine;
-using UnityEngine.InputSystem;
+﻿using UnityEngine.InputSystem;
 
-namespace LogicTower.Player.States
+namespace LogicTower.PlayerBehavior.States
 {
     public class JumpState : AirState
     {
@@ -9,23 +8,23 @@ namespace LogicTower.Player.States
         {
             base.Enter();
             Controller.Animator.Play(Controller.Animations.JumpState);
-            Controller.Rigidbody.gravityScale = Controller.Settings.JumpGravityScale;
-            
-            Controller.Rigidbody.velocity = Vector2.up * Controller.Settings.JumpVelocity;
-            Controller.Inputs.PlayerMovement.Jump.canceled += StartFalling;
+            Controller.Physics.SetGravity(PlayerPhysics.GravityType.Jump);
+
+            Controller.Physics.Jump();
+            Controller.Inputs.Movement.Jump.canceled += StartFalling;
         }
 
         public override void Exit()
         {
             base.Exit();
-            Controller.Inputs.PlayerMovement.Jump.canceled -= StartFalling;
+            Controller.Inputs.Movement.Jump.canceled -= StartFalling;
         }
 
         public override void Tick()
         {
             base.Tick();
             
-            if (Controller.Rigidbody.velocity.y < 0f)
+            if (Controller.Physics.IsFalling())
                 Controller.SwitchState<FallState>();
         }
         

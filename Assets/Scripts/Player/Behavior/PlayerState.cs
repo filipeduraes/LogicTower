@@ -1,4 +1,4 @@
-﻿namespace LogicTower.Player
+﻿namespace LogicTower.PlayerBehavior
 {
     public abstract class PlayerState
     {

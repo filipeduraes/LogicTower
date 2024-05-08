@@ -1,7 +1,6 @@
-﻿using UnityEngine;
-using UnityEngine.InputSystem;
+﻿using UnityEngine.InputSystem;
 
-namespace LogicTower.Player.States
+namespace LogicTower.PlayerBehavior.States
 {
     public class RunState : GroundState
     {
@@ -10,24 +9,24 @@ namespace LogicTower.Player.States
             base.Enter();
             
             Controller.Animator.Play(Controller.Animations.RunState);
-            Controller.Inputs.PlayerMovement.Move.canceled += ReturnToIdle;
+            Controller.Inputs.Movement.Move.canceled += ReturnToIdle;
         }
 
         public override void Exit()
         {
             base.Exit();
-            Controller.Inputs.PlayerMovement.Move.canceled -= ReturnToIdle;
+            Controller.Inputs.Movement.Move.canceled -= ReturnToIdle;
         }
 
         public override void Tick()
         {
             base.Tick();
-            int direction = (int) Controller.Inputs.PlayerMovement.Move.ReadValue<float>();
+            int direction = (int) Controller.Inputs.Movement.Move.ReadValue<float>();
 
             if(direction != 0)
                 Controller.SpriteRenderer.flipX = direction < 0f;
-            
-            Controller.Rigidbody.velocity = direction * Controller.Settings.MoveVelocity * Vector2.right;
+
+            Controller.Physics.Run(direction);
         }
         
         private void ReturnToIdle(InputAction.CallbackContext context)

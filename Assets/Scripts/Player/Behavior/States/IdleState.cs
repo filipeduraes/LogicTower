@@ -1,7 +1,6 @@
-﻿using UnityEngine;
-using UnityEngine.InputSystem;
+﻿using UnityEngine.InputSystem;
 
-namespace LogicTower.Player.States
+namespace LogicTower.PlayerBehavior.States
 {
     public class IdleState : GroundState
     {
@@ -9,19 +8,20 @@ namespace LogicTower.Player.States
         {
             base.Enter();
 
-            if (Controller.Inputs.PlayerMovement.Move.inProgress)
+            if (Controller.Inputs.Movement.Move.inProgress)
                 Controller.SwitchState<RunState>();
             
             Controller.Animator.Play(Controller.Animations.IdleState);
-            Controller.Rigidbody.velocity = Vector2.zero;
+            Controller.Physics.SetFullFriction();
 
-            Controller.Inputs.PlayerMovement.Move.started += StartMoving;
+            Controller.Inputs.Movement.Move.started += StartMoving;
         }
 
         public override void Exit()
         {
             base.Exit();
-            Controller.Inputs.PlayerMovement.Move.started -= StartMoving;
+            Controller.Physics.SetNoFriction();
+            Controller.Inputs.Movement.Move.started -= StartMoving;
         }
 
         private void StartMoving(InputAction.CallbackContext context)
