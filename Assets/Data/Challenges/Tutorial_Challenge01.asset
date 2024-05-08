@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Tutorial_Challenge01
   m_EditorClassIdentifier: 
   expression: ~p
+  prepositionDescriptions: []

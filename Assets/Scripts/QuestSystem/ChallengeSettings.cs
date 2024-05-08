@@ -6,6 +6,7 @@ namespace LogicTower.QuestSystem
     public class ChallengeSettings : ScriptableObject
     {
         [SerializeField] private string expression;
+        [SerializeField] private string[] prepositionDescriptions;
 
         public string Expression => expression;
     }

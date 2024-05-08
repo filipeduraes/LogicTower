@@ -9,16 +9,18 @@ namespace LogicTower.QuestSystem
     {
         [SerializeField] private ChallengeSettings challengeSettings;
 
-        public bool ChallengeIsFinished { get; private set; }
 
         public static event Action<QuestData> OnQuestDataChanged = delegate { }; 
+        public static event Action<bool> OnQuestFinishedChanged = delegate { };
+        
+        private static QuestManager questManager;
         private readonly Dictionary<Formula, bool> _challengeVariables = new();
         private ExpressionParser _parser;
-        private static QuestManager _questManager;
+        private bool _challengeIsFinished;
 
         private void Awake()
         {
-            _questManager = this;
+            questManager = this;
             _parser = new ExpressionParser(challengeSettings.Expression);
         }
 
@@ -29,7 +31,7 @@ namespace LogicTower.QuestSystem
 
         public static void SetChallengeVariable(QuestVariable questVariable, bool value)
         {
-            _questManager.SetChallengeVariableInternal(questVariable, value);
+            questManager.SetChallengeVariableInternal(questVariable, value);
         }
 
         private void SetChallengeVariableInternal(QuestVariable questVariable, bool value)
@@ -37,9 +39,14 @@ namespace LogicTower.QuestSystem
             Formula formula = (Formula)(int)questVariable;
             
             _challengeVariables[formula] = value;
-            ChallengeIsFinished = _parser.Solve(_challengeVariables);
+            bool solved = _parser.Solve(_challengeVariables);
             
             OnQuestDataChanged(new QuestData(_parser.GetTokens(), _challengeVariables));
+
+            if (_challengeIsFinished != solved)
+                OnQuestFinishedChanged(solved);
+            
+            _challengeIsFinished = solved;
         }
         
         public enum QuestVariable
