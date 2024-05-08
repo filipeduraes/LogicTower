@@ -138,6 +138,45 @@ namespace LogicTower.Inputs
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""PlayerActions"",
+            ""id"": ""86eb4a86-c98e-4101-8a3c-7ba5146c3017"",
+            ""actions"": [
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""374cbe82-d4f1-4419-9b0a-29e6862c8e4d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""0696eb7a-514d-49d2-857d-b4b547b62e62"",
+                    ""path"": ""<Keyboard>/c"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""eac754f7-2e16-4ef3-8588-bca894578bc3"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -146,6 +185,9 @@ namespace LogicTower.Inputs
             m_PlayerMovement = asset.FindActionMap("PlayerMovement", throwIfNotFound: true);
             m_PlayerMovement_Move = m_PlayerMovement.FindAction("Move", throwIfNotFound: true);
             m_PlayerMovement_Jump = m_PlayerMovement.FindAction("Jump", throwIfNotFound: true);
+            // PlayerActions
+            m_PlayerActions = asset.FindActionMap("PlayerActions", throwIfNotFound: true);
+            m_PlayerActions_Interact = m_PlayerActions.FindAction("Interact", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -257,10 +299,60 @@ namespace LogicTower.Inputs
             }
         }
         public PlayerMovementActions @PlayerMovement => new PlayerMovementActions(this);
+
+        // PlayerActions
+        private readonly InputActionMap m_PlayerActions;
+        private List<IPlayerActionsActions> m_PlayerActionsActionsCallbackInterfaces = new List<IPlayerActionsActions>();
+        private readonly InputAction m_PlayerActions_Interact;
+        public struct PlayerActionsActions
+        {
+            private @PlayerInputs m_Wrapper;
+            public PlayerActionsActions(@PlayerInputs wrapper) { m_Wrapper = wrapper; }
+            public InputAction @Interact => m_Wrapper.m_PlayerActions_Interact;
+            public InputActionMap Get() { return m_Wrapper.m_PlayerActions; }
+            public void Enable() { Get().Enable(); }
+            public void Disable() { Get().Disable(); }
+            public bool enabled => Get().enabled;
+            public static implicit operator InputActionMap(PlayerActionsActions set) { return set.Get(); }
+            public void AddCallbacks(IPlayerActionsActions instance)
+            {
+                if (instance == null || m_Wrapper.m_PlayerActionsActionsCallbackInterfaces.Contains(instance)) return;
+                m_Wrapper.m_PlayerActionsActionsCallbackInterfaces.Add(instance);
+                @Interact.started += instance.OnInteract;
+                @Interact.performed += instance.OnInteract;
+                @Interact.canceled += instance.OnInteract;
+            }
+
+            private void UnregisterCallbacks(IPlayerActionsActions instance)
+            {
+                @Interact.started -= instance.OnInteract;
+                @Interact.performed -= instance.OnInteract;
+                @Interact.canceled -= instance.OnInteract;
+            }
+
+            public void RemoveCallbacks(IPlayerActionsActions instance)
+            {
+                if (m_Wrapper.m_PlayerActionsActionsCallbackInterfaces.Remove(instance))
+                    UnregisterCallbacks(instance);
+            }
+
+            public void SetCallbacks(IPlayerActionsActions instance)
+            {
+                foreach (var item in m_Wrapper.m_PlayerActionsActionsCallbackInterfaces)
+                    UnregisterCallbacks(item);
+                m_Wrapper.m_PlayerActionsActionsCallbackInterfaces.Clear();
+                AddCallbacks(instance);
+            }
+        }
+        public PlayerActionsActions @PlayerActions => new PlayerActionsActions(this);
         public interface IPlayerMovementActions
         {
             void OnMove(InputAction.CallbackContext context);
             void OnJump(InputAction.CallbackContext context);
+        }
+        public interface IPlayerActionsActions
+        {
+            void OnInteract(InputAction.CallbackContext context);
         }
     }
 }

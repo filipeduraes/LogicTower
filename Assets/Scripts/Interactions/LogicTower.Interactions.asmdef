@@ -1,0 +1,8 @@
+﻿{
+  "name": "LogicTower.Interactions",
+  "rootNamespace": "LogicTower.Interactions",
+  "references": [
+    "GUID:96e302153f93314479af668b76e980b2",
+    "GUID:186b741767ed4127804eda2880794f5e"
+  ]
+}
