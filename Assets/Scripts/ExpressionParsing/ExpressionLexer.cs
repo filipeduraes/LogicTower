@@ -26,40 +26,25 @@ namespace LogicTower.ExpressionParsing
             return tokens;
         }
 
-        private static bool TryGetMultiCharacterToken(string expression, int initialIndex, out int finalIndex, out Token token)
+        private static bool TryGetMultiCharacterToken(ReadOnlySpan<char> expression, int initialIndex, out int finalIndex, out Token token)
         {
             string[] multiCharacterTokens = { "->", "<->", "p1", "p2", "p3" };
-            bool[] foundErrorInMatch = new bool[5];
+            finalIndex = initialIndex;
+            token = null;
 
             for (int i = initialIndex; i < expression.Length; i++)
             {
-                for (int j = 0; j < multiCharacterTokens.Length; j++)
+                foreach (string multiToken in multiCharacterTokens)
                 {
-                    if (!foundErrorInMatch[j])
+                    if (expression.Length - i >= multiToken.Length && expression.Slice(i, multiToken.Length).SequenceEqual(multiToken.AsSpan()))
                     {
-                        int characterLocalIndex = i - initialIndex;
-                        
-                        if (characterLocalIndex >= multiCharacterTokens[j].Length)
-                            break;
-                        
-                        if (expression[i] != multiCharacterTokens[j][characterLocalIndex])
-                            foundErrorInMatch[j] = true;
+                        finalIndex = i + multiToken.Length - 1;
+                        token = GetTokenFromString(multiToken);
+                        return true;
                     }
                 }
             }
 
-            for (int i = 0; i < foundErrorInMatch.Length; i++)
-            {
-                if (!foundErrorInMatch[i])
-                {
-                    token = GetTokenFromString(multiCharacterTokens[i]);
-                    finalIndex = initialIndex + multiCharacterTokens[i].Length - 1;
-                    return true;
-                }
-            }
-
-            token = null;
-            finalIndex = initialIndex;
             return false;
         }
 
