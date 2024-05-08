@@ -5,11 +5,11 @@ namespace LogicTower.Player.States
 {
     public class RunState : GroundState
     {
-        private int _lastDirection;
-        
         public override void Enter()
         {
             base.Enter();
+            
+            Controller.Animator.Play(Controller.Animations.RunState);
             Controller.Inputs.PlayerMovement.Move.canceled += ReturnToIdle;
         }
 
@@ -24,11 +24,8 @@ namespace LogicTower.Player.States
             base.Tick();
             int direction = (int) Controller.Inputs.PlayerMovement.Move.ReadValue<float>();
 
-            if (direction != _lastDirection)
-            {
-                _lastDirection = direction;
+            if(direction != 0)
                 Controller.SpriteRenderer.flipX = direction < 0f;
-            }
             
             Controller.Rigidbody.velocity = direction * Controller.Settings.MoveVelocity * Vector2.right;
         }

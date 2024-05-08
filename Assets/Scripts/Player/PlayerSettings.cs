@@ -12,6 +12,8 @@ namespace LogicTower.Player
         [Header("Physics")] 
         [SerializeField] private float groundDistance = 0.5f;
         [SerializeField] private float maxFallVelocity = 20f;
+        [SerializeField] private float jumpGravityScale = 0.5f;
+        [SerializeField] private float fallGravityScale = 3f;
         [SerializeField] private LayerMask groundLayer;
         
         [Header("Animation")]
@@ -22,6 +24,8 @@ namespace LogicTower.Player
         public float JumpVelocity => jumpVelocity;
         public float GroundDistance => groundDistance;
         public float MaxFallVelocity => maxFallVelocity;
+        public float JumpGravityScale => jumpGravityScale;
+        public float FallGravityScale => fallGravityScale;
         public LayerMask GroundLayer => groundLayer;
     }
 }

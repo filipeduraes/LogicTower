@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PlayerSettings
   m_EditorClassIdentifier: 
   moveVelocity: 5
-  jumpVelocity: 4
+  jumpVelocity: 6
   groundDistance: 0.5
   maxFallVelocity: 20
   groundLayer:

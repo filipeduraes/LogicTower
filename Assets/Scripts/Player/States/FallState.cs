@@ -7,7 +7,9 @@ namespace LogicTower.Player.States
         public override void Enter()
         {
             base.Enter();
-            
+
+            Controller.Animator.Play(Controller.Animations.FallState);
+            Controller.Rigidbody.gravityScale = Controller.Settings.FallGravityScale;
             Vector2 velocity = Controller.Rigidbody.velocity;
 
             if (velocity.y > 0f)
@@ -16,7 +18,7 @@ namespace LogicTower.Player.States
                 Controller.Rigidbody.velocity = velocity;
             }
         }
-
+        
         public override void Tick()
         {
             base.Tick();
@@ -28,7 +30,7 @@ namespace LogicTower.Player.States
                 Controller.Rigidbody.velocity = velocity;
             }
 
-            if (Physics2D.Raycast(Controller.GroundCheckPivot.position, Vector2.down, Controller.Settings.GroundDistance, Controller.Settings.GroundLayer))
+            if (Mathf.Abs(Controller.Rigidbody.velocity.y) <= 0f)
                 Controller.SwitchState<IdleState>();
         }
     }

@@ -8,6 +8,9 @@ namespace LogicTower.Player.States
         public override void Enter()
         {
             base.Enter();
+            Controller.Animator.Play(Controller.Animations.JumpState);
+            Controller.Rigidbody.gravityScale = Controller.Settings.JumpGravityScale;
+            
             Controller.Rigidbody.velocity = Vector2.up * Controller.Settings.JumpVelocity;
             Controller.Inputs.PlayerMovement.Jump.canceled += StartFalling;
         }

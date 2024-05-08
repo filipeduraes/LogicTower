@@ -8,7 +8,11 @@ namespace LogicTower.Player.States
         public override void Enter()
         {
             base.Enter();
-            Controller.Animator.Play(Controller.PlayerAnimations.IdleState);
+
+            if (Controller.Inputs.PlayerMovement.Move.inProgress)
+                Controller.SwitchState<RunState>();
+            
+            Controller.Animator.Play(Controller.Animations.IdleState);
             Controller.Rigidbody.velocity = Vector2.zero;
 
             Controller.Inputs.PlayerMovement.Move.started += StartMoving;

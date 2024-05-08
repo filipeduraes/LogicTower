@@ -16,7 +16,7 @@ namespace LogicTower.Player
         
         public PlayerInputs Inputs { get; private set; }
         public Animator Animator => animator;
-        public PlayerAnimations PlayerAnimations => Settings.PlayerAnimations;
+        public PlayerAnimations Animations => Settings.PlayerAnimations;
         public Rigidbody2D Rigidbody => playerRigidbody;
         public PlayerSettings Settings => playerSettings;
         public SpriteRenderer SpriteRenderer => spriteRenderer;
@@ -28,6 +28,7 @@ namespace LogicTower.Player
         private void Awake()
         {
             Inputs = new PlayerInputs();
+            Animations.InitializeHashes();
             SwitchState<IdleState>();
         }
 
