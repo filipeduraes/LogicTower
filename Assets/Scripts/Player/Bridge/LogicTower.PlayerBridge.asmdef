@@ -3,6 +3,7 @@
   "rootNamespace": "LogicTower.PlayerBridge",
   "references": [
     "GUID:7cdfc38328919064daad171a9ab9641a",
-    "GUID:5efd200af4df4c5ab7527c750bd27bcf"
+    "GUID:5efd200af4df4c5ab7527c750bd27bcf",
+    "GUID:7d2fb3d9e3b14a9b89b17fbf629413ab"
   ]
 }

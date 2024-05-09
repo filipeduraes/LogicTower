@@ -1,6 +1,7 @@
 ﻿{
   "name": "LogicTower.Data",
   "references": [
-    "GUID:9e24947de15b9834991c9d8411ea37cf"
+    "GUID:9e24947de15b9834991c9d8411ea37cf",
+    "GUID:498bf3a1ee216d247a4c9de1cc16cd79"
   ]
 }

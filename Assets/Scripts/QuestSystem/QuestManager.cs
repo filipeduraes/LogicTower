@@ -26,7 +26,7 @@ namespace LogicTower.QuestSystem
 
         private void Start()
         {
-            OnQuestDataChanged(new QuestData(_parser.GetTokens(), _challengeVariables));
+            OnQuestDataChanged(new QuestData(_parser.GetTokens(), _challengeVariables, challengeSettings));
         }
 
         public static void SetChallengeVariable(QuestVariable questVariable, bool value)
@@ -41,7 +41,7 @@ namespace LogicTower.QuestSystem
             _challengeVariables[formula] = value;
             bool solved = _parser.Solve(_challengeVariables);
             
-            OnQuestDataChanged(new QuestData(_parser.GetTokens(), _challengeVariables));
+            OnQuestDataChanged(new QuestData(_parser.GetTokens(), _challengeVariables, challengeSettings));
 
             if (_challengeIsFinished != solved)
                 OnQuestFinishedChanged(solved);

@@ -11,18 +11,19 @@ namespace LogicTower.LevelManagement
         [SerializeField] private ChallengeSettings[] challenges;
         [SerializeField] private LoadTransitionHandler transitionHandler;
 
-        public static event Action OnLevelLoaded = delegate { };
+        public static event Action<ChallengeSettings> OnLevelLoaded = delegate { };
         private ChallengeSettings CurrentChallengeSettings => challenges[_currentChallenge];
 
-        private static LevelLoader _levelLoader;
-        private static bool _isLoadingLevel;
+        private static LevelLoader levelLoader;
+        private static bool isLoadingLevel;
+        
         private int _currentChallenge = -1;
         private AsyncOperationHandle _loadOperation;
         private AsyncOperationHandle<GameObject> _instantiateOperation;
 
         private void Start()
         {
-            _levelLoader = this;
+            levelLoader = this;
             LoadNextChallenge();
 
             transitionHandler.OnTransitionFinished += ReleaseAndLoadNextLevel;
@@ -35,21 +36,36 @@ namespace LogicTower.LevelManagement
 
         public static void LoadNextChallenge()
         {
-            if (!_isLoadingLevel)
+            if (!isLoadingLevel)
             {
-                _isLoadingLevel = true;
+                isLoadingLevel = true;
                 
-                if (_levelLoader.HasLoadedLevel())
-                    _levelLoader.transitionHandler.FadeOut();
+                if (levelLoader.HasLoadedLevel())
+                    levelLoader.transitionHandler.FadeOut();
                 else
-                    _levelLoader.LoadNextChallengeInternal();
+                    levelLoader.LoadNextChallengeInternal();
             }
+        }
+
+        public static void ReloadCurrentChallenge()
+        {
+            levelLoader.ReloadCurrentChallengeInternal();
         }
         
         private void ReleaseAndLoadNextLevel()
         {
             ReleaseCurrentChallenge();
             LoadNextChallengeInternal();
+        }
+
+        private void ReloadCurrentChallengeInternal()
+        {
+            if (_loadOperation.IsValid() && _instantiateOperation.IsValid())
+            {
+                Addressables.ReleaseInstance(_instantiateOperation.Result);
+                _instantiateOperation = Addressables.InstantiateAsync(CurrentChallengeSettings.LevelPrefab);
+                _instantiateOperation.Completed += RevealLevel;
+            }
         }
 
         private void LoadNextChallengeInternal()
@@ -70,8 +86,8 @@ namespace LogicTower.LevelManagement
         private void RevealLevel(AsyncOperationHandle<GameObject> operation)
         {
             _instantiateOperation.Completed -= RevealLevel;
-            _isLoadingLevel = false;
-            OnLevelLoaded();
+            isLoadingLevel = false;
+            OnLevelLoaded(CurrentChallengeSettings);
             transitionHandler.FadeIn();
         }
 

@@ -1,4 +1,5 @@
-﻿using LogicTower.LevelManagement;
+﻿using LogicTower.Data;
+using LogicTower.LevelManagement;
 using LogicTower.PlayerBehavior;
 using LogicTower.PlayerBehavior.States;
 using UnityEngine;
@@ -19,7 +20,7 @@ namespace LogicTower.PlayerBridge
             LevelLoader.OnLevelLoaded -= ResetPlayerPosition;
         }
 
-        private void ResetPlayerPosition()
+        private void ResetPlayerPosition(ChallengeSettings challengeSettings)
         {
             Vector3 initialPosition = PlayerInitialPosition.GetInitialPosition();
             playerController.transform.position = initialPosition;

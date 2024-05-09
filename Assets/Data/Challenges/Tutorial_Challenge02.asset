@@ -13,7 +13,11 @@ MonoBehaviour:
   m_Name: Tutorial_Challenge02
   m_EditorClassIdentifier: 
   expression: p ^ q
-  prepositionDescriptions: []
+  formulaDescriptions:
+  - formula: 0
+    description: "A luz est\xE1 acesa"
+  - formula: 1
+    description: "A alavanca est\xE1 acionada"
   levelPrefab:
     m_AssetGUID: edf34b40afdf07f49879c22053d421ec
     m_SubObjectName: 

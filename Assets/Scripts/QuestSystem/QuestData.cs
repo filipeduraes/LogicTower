@@ -1,22 +1,25 @@
 ﻿using System.Collections.Generic;
+using LogicTower.Data;
 using LogicTower.ExpressionParsing;
 
 namespace LogicTower.QuestSystem
 {
-    public struct QuestData
+    public readonly struct QuestData
     {
-        public List<Token> tokens;
-        public Dictionary<Formula, bool> variables;
+        public readonly List<Token> tokens;
+        public readonly ChallengeSettings challengeSettings;
+        private readonly Dictionary<Formula, bool> _variables;
 
-        public QuestData(List<Token> tokens, Dictionary<Formula,bool> variables)
+        public QuestData(List<Token> tokens, Dictionary<Formula, bool> variables, ChallengeSettings challengeSettings)
         {
             this.tokens = tokens;
-            this.variables = variables;
+            this.challengeSettings = challengeSettings;
+            _variables = variables;
         }
 
         public bool GetFormulaValue(Formula formula)
         {
-            return variables.ContainsKey(formula) && variables[formula];
+            return _variables.ContainsKey(formula) && _variables[formula];
         }
     }
 }

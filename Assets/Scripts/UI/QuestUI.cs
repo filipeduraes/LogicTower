@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Text;
 using LogicTower.ExpressionParsing;
+using LogicTower.QuestSystem;
 using TMPro;
 using UnityEngine;
 
-namespace LogicTower.QuestSystem
+namespace LogicTower.UI
 {
     public class QuestUI : MonoBehaviour
     {
@@ -35,28 +36,10 @@ namespace LogicTower.QuestSystem
                 else if (token.IsType(TokenType.UnaryOperator, out UnaryOperatorToken unaryToken))
                     stringBuilder.Append(GetUnaryOperatorRepresentation(unaryToken.Operator));
                 else if (token.IsType(TokenType.Formula, out FormulaToken formulaToken))
-                    stringBuilder.Append(GetFormulaRepresentation(formulaToken.Formula, questData.GetFormulaValue(formulaToken.Formula)));
+                    stringBuilder.Append(QuestUIUtils.GetFormulaRepresentation(formulaToken.Formula, questData.GetFormulaValue(formulaToken.Formula) ? trueColor : falseColor));
             }
             
             text.SetText(stringBuilder.ToString());
-        }
-
-        private string GetFormulaRepresentation(Formula formula, bool isTrue)
-        {
-            string formulaText = formula switch
-            {
-                Formula.P => "p",
-                Formula.Q => "q",
-                Formula.R => "r",
-                Formula.S => "s",
-                Formula.P1 => "p1",
-                Formula.P2 => "p2",
-                Formula.P3 => "p3",
-                _ => throw new ArgumentOutOfRangeException(nameof(formula), formula, null)
-            };
-
-            Color color = isTrue ? trueColor : falseColor;
-            return $"<color=#{ColorUtility.ToHtmlStringRGB(color)}>{formulaText}</color>";
         }
 
         private static string GetUnaryOperatorRepresentation(UnaryOperator unaryOperator)
