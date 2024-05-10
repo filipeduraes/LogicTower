@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731713, g: 0.13414738, b: 0.121078536, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -554,6 +554,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   challenges:
+  - {fileID: 11400000, guid: a64bf5e2a1c1a5e4d94ae4528a6aa23c, type: 2}
   - {fileID: 11400000, guid: 1b95e81225c736e49b93fb7256cfc808, type: 2}
   - {fileID: 11400000, guid: f5ed7e9225e95874eb6d33cff1fc28be, type: 2}
   transitionHandler: {fileID: 408512993}
@@ -1564,21 +1565,6 @@ PrefabInstance:
     - target: {fileID: 5395308546505203076, guid: 1e53d8fbd130dc440a728f34d9896952,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5395308546505203076, guid: 1e53d8fbd130dc440a728f34d9896952,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5395308546505203076, guid: 1e53d8fbd130dc440a728f34d9896952,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5395308546505203076, guid: 1e53d8fbd130dc440a728f34d9896952,
-        type: 3}
-      propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5395308546505203076, guid: 1e53d8fbd130dc440a728f34d9896952,

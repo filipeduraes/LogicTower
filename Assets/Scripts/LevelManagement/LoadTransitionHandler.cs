@@ -22,6 +22,13 @@ namespace LogicTower.LevelManagement
             StartCoroutine(Fade(1f, 0f));
         }
 
+        public void SetBlackScreen()
+        {
+            Color fadeColor = fadeImage.color;
+            fadeColor.a = 1f;
+            fadeImage.color = fadeColor;
+        }
+
         private IEnumerator StartFadeOut()
         {
             yield return Fade(0f, 1f);

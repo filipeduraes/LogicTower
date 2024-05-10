@@ -25,6 +25,7 @@ namespace LogicTower.LevelManagement
         {
             levelLoader = this;
             LoadNextChallenge();
+            transitionHandler.SetBlackScreen();
 
             transitionHandler.OnTransitionFinished += ReleaseAndLoadNextLevel;
         }
