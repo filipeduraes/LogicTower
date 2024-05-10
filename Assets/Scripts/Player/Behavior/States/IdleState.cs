@@ -1,4 +1,5 @@
-﻿using UnityEngine.InputSystem;
+﻿using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace LogicTower.PlayerBehavior.States
 {
@@ -7,14 +8,16 @@ namespace LogicTower.PlayerBehavior.States
         public override void Enter()
         {
             base.Enter();
-
-            if (Controller.Inputs.Movement.Move.inProgress)
-                Controller.SwitchState<RunState>();
             
             Controller.Animator.Play(Controller.Animations.IdleState);
             Controller.Physics.SetFullFriction();
 
             Controller.Inputs.Movement.Move.started += StartMoving;
+            
+            if(Time.time - Controller.Blackboard.LastJumpPressed < Controller.Settings.AirJumpTime)
+                Controller.SwitchState<JumpState>();
+            else if (Controller.Inputs.Movement.Move.inProgress)
+                Controller.SwitchState<RunState>();
         }
 
         public override void Exit()

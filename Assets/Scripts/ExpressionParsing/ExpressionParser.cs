@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace LogicTower.ExpressionParsing
 {
     public class ExpressionParser
     {
         private readonly IExpressionNode _root;
-        private readonly List<Token> _tokens;
+        private readonly List<Token> _originalTokens;
         
         public ExpressionParser(string expression)
         {
@@ -15,9 +16,10 @@ namespace LogicTower.ExpressionParsing
                 _root = new FormulaNode(new FormulaToken(Formula.P));
                 return;
             }
-            
-            _tokens = ExpressionLexer.Tokenize(expression);
-            _root = BuildExpressionTree(_tokens);
+
+            List<Token> parserTokens = ExpressionLexer.Tokenize(expression);
+            _originalTokens = parserTokens.ToList();
+            _root = BuildExpressionTree(parserTokens);
         }
 
         public bool Solve(Dictionary<Formula, bool> formulaValues)
@@ -27,7 +29,7 @@ namespace LogicTower.ExpressionParsing
         
         public List<Token> GetTokens()
         {
-            return _tokens;
+            return _originalTokens;
         }
 
         private IExpressionNode BuildExpressionTree(List<Token> tokens)

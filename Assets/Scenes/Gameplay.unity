@@ -555,9 +555,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   challenges:
-  - {fileID: 11400000, guid: a64bf5e2a1c1a5e4d94ae4528a6aa23c, type: 2}
+  - {fileID: 11400000, guid: 50db3a0d3e6740a4790d968328f1022b, type: 2}
   - {fileID: 11400000, guid: 1b95e81225c736e49b93fb7256cfc808, type: 2}
   - {fileID: 11400000, guid: f5ed7e9225e95874eb6d33cff1fc28be, type: 2}
+  - {fileID: 11400000, guid: a64bf5e2a1c1a5e4d94ae4528a6aa23c, type: 2}
   transitionHandler: {fileID: 408512993}
 --- !u!4 &408512992
 Transform:

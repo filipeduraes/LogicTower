@@ -15,6 +15,7 @@ namespace LogicTower.PlayerBehavior
         [SerializeField] private InputManager inputManager;
         [SerializeField] private PlayerPhysics playerPhysics;
 
+        public PlayerBlackboard Blackboard { get; } = new();
         public InputManager Inputs => inputManager;
         public Animator Animator => animator;
         public PlayerAnimations Animations => Settings.PlayerAnimations;
