@@ -1,5 +1,3 @@
-using System;
-
 namespace LogicTower.ExpressionParsing
 {
     public class FormulaToken : Token

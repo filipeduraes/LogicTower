@@ -13,4 +13,11 @@ MonoBehaviour:
   m_Name: Tutorial_Challenge01
   m_EditorClassIdentifier: 
   expression: ~p
-  prepositionDescriptions: []
+  formulaDescriptions:
+  - formula: 0
+    description: "A luz est\xE1 apagada"
+  levelPrefab:
+    m_AssetGUID: 4bb59a44f6abfcb489fb089694440884
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0

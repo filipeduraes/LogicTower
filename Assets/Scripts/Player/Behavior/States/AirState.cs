@@ -1,6 +1,6 @@
 ﻿namespace LogicTower.PlayerBehavior.States
 {
-    public class AirState : PlayerState
+    public class AirState : BaseGameplayState
     {
         public override void Tick()
         {

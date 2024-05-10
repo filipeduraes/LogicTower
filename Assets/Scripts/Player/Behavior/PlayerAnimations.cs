@@ -10,11 +10,13 @@ namespace LogicTower.PlayerBehavior
         [SerializeField] private string runState = "Run";
         [SerializeField] private string jumpState = "Jump";
         [SerializeField] private string fallState = "Fall";
+        [SerializeField] private string doorInState = "DoorIn";
         
         public int IdleState { get; private set; }
         public int RunState { get; private set; }
         public int JumpState { get; private set; }
         public int FallState { get; private set; }
+        public int DoorInState { get; private set; }
 
         public void InitializeHashes()
         {
@@ -22,6 +24,7 @@ namespace LogicTower.PlayerBehavior
             RunState = Animator.StringToHash(runState);
             JumpState = Animator.StringToHash(jumpState);
             FallState = Animator.StringToHash(fallState);
+            DoorInState = Animator.StringToHash(doorInState);
         }
     }
 }
