@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace LogicTower.PlayerBehavior
 {
@@ -119,7 +118,7 @@ namespace LogicTower.PlayerBehavior
 
         public bool StoppedFalling()
         {
-            return Mathf.Abs(playerRigidbody.velocity.y) <= 0f && IsTouchingGround();
+            return playerRigidbody.velocity.y >= 0f && IsTouchingGround();
         }
         
         private void FlipX(bool flip)

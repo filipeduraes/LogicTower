@@ -6,31 +6,42 @@ using UnityEngine;
 
 namespace LogicTower.QuestSystem
 {
-    public class QuestManager : MonoBehaviour
+    public class QuestManager : MonoBehaviour, IChallengeHandler
     {
-        [SerializeField] private ChallengeSettings challengeSettings;
-
         public static event Action<QuestData> OnQuestDataChanged = delegate { }; 
         public static event Action<bool> OnQuestFinishedChanged = delegate { };
         
         private static QuestManager questManager;
         private readonly Dictionary<Formula, bool> _challengeVariables = new();
+        private static readonly Queue<(QuestVariable, bool)> ChangesRequestedBeforeInitialization = new();
+        
+        private ChallengeSettings _challengeSettings;
         private ExpressionParser _parser;
         private bool _challengeIsFinished;
 
-        private void Awake()
+        public void PopulateSettings(ChallengeSettings settings)
         {
             questManager = this;
-            _parser = new ExpressionParser(challengeSettings.Expression);
-        }
+            _challengeSettings = settings;
+            _parser = new ExpressionParser(_challengeSettings.Expression);
 
-        private void Start()
-        {
-            OnQuestDataChanged(new QuestData(_parser.GetTokens(), _challengeVariables, challengeSettings));
+            while (ChangesRequestedBeforeInitialization.Count > 0)
+            {
+                (QuestVariable variable, bool value) = ChangesRequestedBeforeInitialization.Dequeue();
+                SetChallengeVariableInternal(variable, value);
+            }
+
+            OnQuestDataChanged(new QuestData(_parser.GetTokens(), _challengeVariables, _challengeSettings));
         }
 
         public static void SetChallengeVariable(QuestVariable questVariable, bool value)
         {
+            if (!questManager)
+            {
+                ChangesRequestedBeforeInitialization.Enqueue((questVariable, value));
+                return;
+            }
+            
             questManager.SetChallengeVariableInternal(questVariable, value);
         }
 
@@ -41,7 +52,7 @@ namespace LogicTower.QuestSystem
             _challengeVariables[formula] = value;
             bool solved = _parser.Solve(_challengeVariables);
             
-            OnQuestDataChanged(new QuestData(_parser.GetTokens(), _challengeVariables, challengeSettings));
+            OnQuestDataChanged(new QuestData(_parser.GetTokens(), _challengeVariables, _challengeSettings));
 
             if (_challengeIsFinished != solved)
                 OnQuestFinishedChanged(solved);

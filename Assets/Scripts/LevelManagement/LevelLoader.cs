@@ -87,6 +87,14 @@ namespace LogicTower.LevelManagement
         private void RevealLevel(AsyncOperationHandle<GameObject> operation)
         {
             _instantiateOperation.Completed -= RevealLevel;
+            IChallengeHandler[] challengeHandlers = _instantiateOperation.Result.GetComponents<IChallengeHandler>();
+
+            if (challengeHandlers != null && challengeHandlers.Length > 0)
+            {
+                foreach (IChallengeHandler handler in challengeHandlers)
+                    handler.PopulateSettings(CurrentChallengeSettings);
+            }
+            
             isLoadingLevel = false;
             OnLevelLoaded(CurrentChallengeSettings);
             transitionHandler.FadeIn();

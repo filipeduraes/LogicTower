@@ -15,9 +15,9 @@ MonoBehaviour:
   expression: (p v q) ^ r
   formulaDescriptions:
   - formula: 0
-    description: "A luz est\xE1 acesa"
+    description: "Porta A est\xE1 aberta"
   - formula: 1
-    description: "A alavanca est\xE1 acionada"
+    description: "Porta B est\xE1 aberta"
   - formula: 2
     description: "A alavanca est\xE1 acionada"
   levelPrefab:

@@ -33,6 +33,7 @@ namespace LogicTower.Interactions
             
             Vector2 initialPosition = body.position;
             Vector2 finalPosition = _hasMoved ? _initialPosition : _initialPosition + offset;
+            _hasMoved = !_hasMoved;
             
             while (timer <= movementTime)
             {
@@ -42,8 +43,6 @@ namespace LogicTower.Interactions
                 timer += Time.deltaTime;
                 yield return null;
             }
-            
-            _hasMoved = !_hasMoved;
         }
     }
 }
