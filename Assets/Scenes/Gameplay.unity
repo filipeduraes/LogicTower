@@ -484,7 +484,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.05, z: -10}
+  m_LocalPosition: {x: 0, y: 1.5, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -559,6 +559,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f5ed7e9225e95874eb6d33cff1fc28be, type: 2}
   - {fileID: 11400000, guid: a64bf5e2a1c1a5e4d94ae4528a6aa23c, type: 2}
   - {fileID: 11400000, guid: 50db3a0d3e6740a4790d968328f1022b, type: 2}
+  - {fileID: 11400000, guid: 3086b59688d919041a420c4c1db0f9e3, type: 2}
   transitionHandler: {fileID: 408512993}
 --- !u!4 &408512992
 Transform:
@@ -700,7 +701,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 0.2}
+  m_AnchorMax: {x: 1, y: 0.15}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1286,7 +1287,7 @@ MonoBehaviour:
   falseColor: {r: 0.6901961, g: 0, b: 0.08627451, a: 1}
   hiddenOffset: 0.5
   showTime: 0.5
-  initialPopupTime: 5
+  initialPopupTime: 4
 --- !u!1 &1412342847
 GameObject:
   m_ObjectHideFlags: 0

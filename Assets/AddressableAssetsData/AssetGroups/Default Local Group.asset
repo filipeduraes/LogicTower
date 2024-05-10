@@ -33,6 +33,10 @@ MonoBehaviour:
     m_Address: Levels/Challenge_04
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 2794fd56afacb4d46952f0bb38e390c0
+    m_Address: Levels/Challenge_05
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 3944ede32a392cf418169d14994b6247, type: 2}
   m_SchemaSet:

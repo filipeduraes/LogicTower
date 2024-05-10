@@ -1,6 +1,6 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using LogicTower.InteractionSystem;
+using LogicTower.QuestSystem;
 using UnityEngine;
 
 namespace LogicTower.UI
@@ -16,14 +16,21 @@ namespace LogicTower.UI
 
         private void OnEnable()
         {
+            QuestManager.OnNewQuestAvailable += ImmediateHideUI;
             Interactor.OnInteractionFound += ShowUI;
             Interactor.OnInteractionReleased += HideUI;
         }
 
         private void OnDisable()
         {
+            QuestManager.OnNewQuestAvailable -= ImmediateHideUI;
             Interactor.OnInteractionFound -= ShowUI;
             Interactor.OnInteractionReleased -= HideUI;
+        }
+
+        private void ImmediateHideUI()
+        {
+            transform.localScale = Vector3.zero;
         }
 
         private void ShowUI(Transform interactionTransform)

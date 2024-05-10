@@ -43,6 +43,8 @@ namespace LogicTower.Interactions
                 timer += Time.deltaTime;
                 yield return null;
             }
+            
+            body.MovePosition(finalPosition);
         }
     }
 }
