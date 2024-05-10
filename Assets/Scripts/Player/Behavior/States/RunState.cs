@@ -8,7 +8,7 @@ namespace LogicTower.PlayerBehavior.States
         {
             base.Enter();
             
-            Controller.Animator.Play(Controller.Animations.RunState);
+            Controller.AnimationController.Play(Controller.Animations.RunState);
             Controller.Inputs.Movement.Move.canceled += ReturnToIdle;
         }
 

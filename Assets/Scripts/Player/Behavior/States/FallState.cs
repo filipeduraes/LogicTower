@@ -11,7 +11,7 @@ namespace LogicTower.PlayerBehavior.States
         {
             base.Enter();
 
-            Controller.Animator.Play(Controller.Animations.FallState);
+            Controller.AnimationController.Play(Controller.Animations.FallState);
             Controller.Physics.SetGravity(PlayerPhysics.GravityType.Fall);
 
             Controller.Physics.ForceFall();

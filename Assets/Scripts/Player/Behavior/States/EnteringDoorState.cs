@@ -5,7 +5,7 @@
         public override void Enter()
         {
             Controller.Physics.SetFullFriction();
-            Controller.Animator.Play(Controller.Animations.DoorInState);
+            Controller.AnimationController.Play(Controller.Animations.DoorInState);
         }
     }
 }

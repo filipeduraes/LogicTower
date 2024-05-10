@@ -9,7 +9,7 @@ namespace LogicTower.PlayerBehavior.States
         {
             base.Enter();
             
-            Controller.Animator.Play(Controller.Animations.IdleState);
+            Controller.AnimationController.Play(Controller.Animations.IdleState);
             Controller.Physics.SetFullFriction();
 
             Controller.Inputs.Movement.Move.started += StartMoving;

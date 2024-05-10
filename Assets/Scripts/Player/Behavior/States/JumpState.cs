@@ -9,7 +9,7 @@ namespace LogicTower.PlayerBehavior.States
         public override void Enter()
         {
             base.Enter();
-            Controller.Animator.Play(Controller.Animations.JumpState);
+            Controller.AnimationController.Play(Controller.Animations.JumpState);
             Controller.Physics.SetGravity(PlayerPhysics.GravityType.Jump);
             Controller.Blackboard.CanJump = false;
 

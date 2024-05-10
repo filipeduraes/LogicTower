@@ -4200,26 +4200,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 6709611166077773403}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1061811908738286886 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6026101626059580285, guid: 1683986b2df85524fb14ae38ad6f15d4,
-    type: 3}
-  m_PrefabInstance: {fileID: 6709611166077773403}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &6957327922108297893
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1061811908738286886}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b183fa8e3ea8464f8ad395bfa7a3aad6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentValue: 1
-  questVariable: 1
 --- !u!1001 &6726507739754096361
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4376,7 +4356,7 @@ PrefabInstance:
         type: 3}
       propertyPath: receiver
       value: 
-      objectReference: {fileID: 1061811908738286885}
+      objectReference: {fileID: 2652801675947014211}
     - target: {fileID: 6627517845569419534, guid: 0d488da38c063ba41932eb66af43a8d2,
         type: 3}
       propertyPath: m_Name
@@ -4393,8 +4373,29 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -1570438722, guid: 52eb5276f8552c843a87c09eed3f620b,
         type: 3}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6627517845569419531, guid: 0d488da38c063ba41932eb66af43a8d2, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0d488da38c063ba41932eb66af43a8d2, type: 3}
+--- !u!1 &3758565684303179944 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6627517845569419534, guid: 0d488da38c063ba41932eb66af43a8d2,
+    type: 3}
+  m_PrefabInstance: {fileID: 8057141831750060454}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &213293225459954529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3758565684303179944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b183fa8e3ea8464f8ad395bfa7a3aad6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentValue: 1
+  questVariable: 1
 --- !u!4 &3758565684303179950 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6627517845569419528, guid: 0d488da38c063ba41932eb66af43a8d2,

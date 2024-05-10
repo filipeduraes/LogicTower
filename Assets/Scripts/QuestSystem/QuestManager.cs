@@ -9,6 +9,7 @@ namespace LogicTower.QuestSystem
     public class QuestManager : MonoBehaviour, IChallengeHandler
     {
         public static event Action<QuestData> OnQuestDataChanged = delegate { }; 
+        public static event Action OnNewQuestAvailable = delegate { }; 
         public static event Action<bool> OnQuestFinishedChanged = delegate { };
         
         private static QuestManager questManager;
@@ -32,6 +33,7 @@ namespace LogicTower.QuestSystem
             }
 
             OnQuestDataChanged(new QuestData(_parser.GetTokens(), _challengeVariables, _challengeSettings));
+            OnNewQuestAvailable();
         }
 
         public static void SetChallengeVariable(QuestVariable questVariable, bool value)
