@@ -36,9 +36,9 @@ namespace LogicTower.ExpressionParsing
             {
                 foreach (string multiToken in multiCharacterTokens)
                 {
-                    if (expression.Length - i >= multiToken.Length && expression.Slice(i, multiToken.Length).SequenceEqual(multiToken.AsSpan()))
+                    if (expression.Slice(initialIndex, i - initialIndex + 1).SequenceEqual(multiToken.AsSpan()))
                     {
-                        finalIndex = i + multiToken.Length - 1;
+                        finalIndex = i - 1;
                         token = GetTokenFromString(multiToken);
                         return true;
                     }

@@ -10,14 +10,15 @@ namespace LogicTower.PlayerBehavior
     {
         [SerializeField] private string currentStateName;
         [SerializeField] private PlayerSettings playerSettings;
-        [SerializeField] private Animator animator;
         [SerializeField] private SpriteRenderer spriteRenderer;
         [SerializeField] private InputManager inputManager;
         [SerializeField] private PlayerPhysics playerPhysics;
+        [SerializeField] private PlayerAnimationController animationController;
 
+        public PlayerBlackboard Blackboard { get; } = new();
         public InputManager Inputs => inputManager;
-        public Animator Animator => animator;
         public PlayerAnimations Animations => Settings.PlayerAnimations;
+        public PlayerAnimationController AnimationController => animationController;
         public PlayerSettings Settings => playerSettings;
         public SpriteRenderer SpriteRenderer => spriteRenderer;
         public PlayerPhysics Physics => playerPhysics;

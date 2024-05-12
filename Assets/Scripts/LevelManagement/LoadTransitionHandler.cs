@@ -38,16 +38,24 @@ namespace LogicTower.LevelManagement
         private IEnumerator Fade(float initialAlpha, float finalAlpha)
         {
             float timer = 0f;
-
+            
             while (timer <= fadeDuration)
             {
-                Color fadeColor = fadeImage.color;
-                fadeColor.a = Mathf.Lerp(initialAlpha, finalAlpha, timer / fadeDuration);
-                fadeImage.color = fadeColor;
+                float alpha = Mathf.Lerp(initialAlpha, finalAlpha, timer / fadeDuration);
+                SetFadeAlpha(alpha);
 
                 timer += Time.deltaTime;
                 yield return null;
             }
+
+            SetFadeAlpha(finalAlpha);
+        }
+
+        private void SetFadeAlpha(float alpha)
+        {
+            Color fadeColor = fadeImage.color;
+            fadeColor.a = alpha;
+            fadeImage.color = fadeColor;
         }
     }
 }

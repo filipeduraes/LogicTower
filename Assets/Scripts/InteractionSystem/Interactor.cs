@@ -7,8 +7,8 @@ namespace LogicTower.InteractionSystem
     {
         [SerializeField] private LayerMask interactableLayer;
         
-        public event Action<Transform> OnInteractionFound = delegate { };
-        public event Action OnInteractionReleased = delegate { };
+        public static event Action<Transform> OnInteractionFound = delegate { };
+        public static event Action OnInteractionReleased = delegate { };
 
         private Transform _interactable;
         private IInteractable[] _interactables;

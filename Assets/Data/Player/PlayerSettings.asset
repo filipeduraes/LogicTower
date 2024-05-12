@@ -14,6 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveVelocity: 5
   jumpVelocity: 6
+  coyoteTime: 0.2
+  airJumpTime: 0.3
+  minJumpTime: 0.1
   groundDistance: 0.2
   maxFallVelocity: 20
   jumpGravityScale: 1

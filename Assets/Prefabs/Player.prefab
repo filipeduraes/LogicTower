@@ -47,6 +47,7 @@ GameObject:
   - component: {fileID: 4369287820324995083}
   - component: {fileID: 5151518691898791887}
   - component: {fileID: 471505109419309479}
+  - component: {fileID: 2587117658477071729}
   - component: {fileID: 5395308546505203075}
   - component: {fileID: 5395308546505203074}
   m_Layer: 6
@@ -99,10 +100,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentStateName: 
   playerSettings: {fileID: 11400000, guid: a8783416e3ac0f84e9412b2fad0e0235, type: 2}
-  animator: {fileID: 6055690726791201734}
   spriteRenderer: {fileID: 5395308548108027592}
   inputManager: {fileID: 2756379837949910823}
   playerPhysics: {fileID: 5534730547310071995}
+  animationController: {fileID: 2587117658477071729}
 --- !u!114 &5534730547310071995
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,6 +175,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerController: {fileID: 2910779576645839095}
+--- !u!114 &2587117658477071729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5395308546505203073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f8ff2acdd3344e6a2f4d063e59a47e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 6055690726791201734}
 --- !u!50 &5395308546505203075
 Rigidbody2D:
   serializedVersion: 4

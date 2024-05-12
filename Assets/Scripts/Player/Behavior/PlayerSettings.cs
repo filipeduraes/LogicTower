@@ -8,6 +8,11 @@ namespace LogicTower.PlayerBehavior
         [Header("Velocity")]
         [SerializeField] private float moveVelocity = 5f;
         [SerializeField] private float jumpVelocity = 4f;
+        
+        [Header("Facilitators")]
+        [SerializeField] private float coyoteTime = 0.2f;
+        [SerializeField] private float airJumpTime = 0.2f;
+        [SerializeField] private float minJumpTime = 0.1f;
 
         [Header("Physics")] 
         [SerializeField] private float groundDistance = 0.5f;
@@ -23,6 +28,9 @@ namespace LogicTower.PlayerBehavior
         [SerializeField] private PlayerAnimations playerAnimations;
 
         public PlayerAnimations PlayerAnimations => playerAnimations;
+        public float CoyoteTime => coyoteTime;
+        public float AirJumpTime => airJumpTime;
+        public float MinJumpTime => minJumpTime;
         public float MoveVelocity => moveVelocity;
         public float JumpVelocity => jumpVelocity;
         public float GroundDistance => groundDistance;

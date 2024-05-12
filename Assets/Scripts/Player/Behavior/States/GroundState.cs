@@ -7,6 +7,7 @@ namespace LogicTower.PlayerBehavior.States
         public override void Enter()
         {
             base.Enter();
+            Controller.Blackboard.CanJump = true;
             Controller.Physics.SetGravity(PlayerPhysics.GravityType.Ground);
             Controller.Inputs.Movement.Jump.started += StartJumping;
         }

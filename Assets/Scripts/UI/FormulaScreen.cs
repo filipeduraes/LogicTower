@@ -14,6 +14,7 @@ namespace LogicTower.UI
         [SerializeField] private Color falseColor = Color.red;
         [SerializeField] private float hiddenOffset;
         [SerializeField] private float showTime = 0.5f;
+        [SerializeField] private float initialPopupTime = 5f;
 
         private Vector2 _initialMinAnchors;
         private Vector2 _initialMaxAnchors;
@@ -33,21 +34,27 @@ namespace LogicTower.UI
         private void OnEnable()
         {
             QuestManager.OnQuestDataChanged += UpdateUI;
+            QuestManager.OnNewQuestAvailable += StartInitialPopup;
         }
 
         private void OnDisable()
         {
             QuestManager.OnQuestDataChanged -= UpdateUI;
+            QuestManager.OnNewQuestAvailable -= StartInitialPopup;
         }
 
         public void ShowUI()
         {
+            StopAllCoroutines();
+            
             if (!_uiIsEnabled)
                 StartCoroutine(ToggleUI());
         }
         
         public void HideUI()
         {
+            StopAllCoroutines();
+            
             if (_uiIsEnabled)
                 StartCoroutine(ToggleUI());
         }
@@ -70,6 +77,18 @@ namespace LogicTower.UI
             formulasText.SetText(textBuilder.ToString());
         }
 
+        private void StartInitialPopup()
+        {
+            StartCoroutine(ShowInitialPopup());
+        }
+        
+        private IEnumerator ShowInitialPopup()
+        {
+            yield return ToggleUI();
+            yield return new WaitForSeconds(initialPopupTime);
+            yield return ToggleUI();
+        }
+
         private IEnumerator ToggleUI()
         {
             _uiIsEnabled = !_uiIsEnabled;
@@ -84,6 +103,8 @@ namespace LogicTower.UI
                 timer += Time.deltaTime;
                 yield return null;
             }
+            
+            SetUIPositionFromOffset(finalOffset);
         }
 
         private void SetUIPositionFromOffset(float offset)
