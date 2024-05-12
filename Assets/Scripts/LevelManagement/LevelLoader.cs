@@ -3,6 +3,7 @@ using LogicTower.Data;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
+using UnityEngine.SceneManagement;
 
 namespace LogicTower.LevelManagement
 {
@@ -72,9 +73,17 @@ namespace LogicTower.LevelManagement
         private void LoadNextChallengeInternal()
         {
             _currentChallenge++;
-            
-            _loadOperation = Addressables.LoadAssetAsync<GameObject>(CurrentChallengeSettings.LevelPrefab);
-            _loadOperation.Completed += SpawnLevel;
+
+            if (_currentChallenge < challenges.Length)
+            {
+                _loadOperation = Addressables.LoadAssetAsync<GameObject>(CurrentChallengeSettings.LevelPrefab);
+                _loadOperation.Completed += SpawnLevel;
+            }
+            else
+            {
+                Scene activeScene = SceneManager.GetActiveScene();
+                SceneManager.LoadScene(activeScene.buildIndex + 1);
+            }
         }
 
         private void SpawnLevel(AsyncOperationHandle handle)

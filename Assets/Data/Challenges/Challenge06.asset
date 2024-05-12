@@ -10,16 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ca120fb3ee925804b96f7770fd4d4530, type: 3}
-  m_Name: Challenge05
+  m_Name: Challenge06
   m_EditorClassIdentifier: 
-  expression: ~(p -> ~q)
+  expression: p1 ^ ~p2 ^ p3
   formulaDescriptions:
-  - formula: 0
-    description: "A luz est\xE1 acesa"
-  - formula: 1
+  - formula: 4
     description: "O bot\xE3o est\xE1 acionado"
+  - formula: 5
+    description: "A luz n\xE3o est\xE1 ligada"
+  - formula: 6
+    description: "A alavanca est\xE1 acionada"
   levelPrefab:
-    m_AssetGUID: 82ea59ce9c730244c98f61247bd0c86f
+    m_AssetGUID: 2794fd56afacb4d46952f0bb38e390c0
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0

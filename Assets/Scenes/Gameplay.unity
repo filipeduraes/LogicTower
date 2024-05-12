@@ -560,6 +560,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a64bf5e2a1c1a5e4d94ae4528a6aa23c, type: 2}
   - {fileID: 11400000, guid: 50db3a0d3e6740a4790d968328f1022b, type: 2}
   - {fileID: 11400000, guid: 3086b59688d919041a420c4c1db0f9e3, type: 2}
+  - {fileID: 11400000, guid: eeb562c0f3e3f784687edbaa9a66ff58, type: 2}
   transitionHandler: {fileID: 408512993}
 --- !u!4 &408512992
 Transform:
